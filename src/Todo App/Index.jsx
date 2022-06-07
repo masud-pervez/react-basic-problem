@@ -18,22 +18,21 @@ export default function Index() {
   };
 
   const handleAdd = (event) => {
-    if (!content) {
-      alert("set a item");
-    } else if (content === !toggleSubmit) {
+
+    if(!toggleSubmit){
       setItems(
-        items.map((elem) => {
+        items.filter((elem) => {
           if (elem.id === edited) {
-            return { ...elem, name: content };
+            return (elem.name = content);
           }
           return elem;
         })
       );
-    } else {
+      setContent("");
+    }else {
       setItems([...items, { id: uuidv4(), name: content }]);
       setContent("");
     }
-
     setToggleSubmit(true);
     event.preventDefault();
   };
@@ -46,7 +45,7 @@ export default function Index() {
 
   const handleRemoveAll = () => {
     setItems([]);
-    setToggleSubmit(true)
+    setToggleSubmit(true);
   };
 
   const handleEdit = (item) => {
@@ -56,6 +55,7 @@ export default function Index() {
     setToggleSubmit(false);
     setContent(newEditItem.name);
     setEdited(item);
+    
   };
   // return the DOM item
   return (
@@ -82,13 +82,13 @@ export default function Index() {
                 />
 
                 {toggleSubmit ? (
-                  <Tooltip title="Submit" color='blue'>
+                  <Tooltip title="Submit" color="blue">
                     <button type="submit" className="btn btn-outline-primary">
                       <FiSend />
                     </button>
                   </Tooltip>
                 ) : (
-                  <Tooltip title="Update" color='blue'>
+                  <Tooltip title="Update" color="blue">
                     <button type="submit" className="btn btn-outline-primary">
                       <GrUpdate />
                     </button>
