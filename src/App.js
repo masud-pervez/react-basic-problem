@@ -1,12 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'antd/dist/antd.css';
-import Index from './Todo App/Index'
+import PointOfSale from './Point of Sale/PointOfSale';
+
 
 function App() {
   return (
     <div>
       <div className='container'>
-        <Index />
+        <PointOfSale/>
       </div>      
     </div>
   );
